@@ -2,7 +2,6 @@
 
 
 def load_data():
-
     import pandas as pd
 
     url = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
@@ -16,7 +15,6 @@ def load_data():
 
 
 def make_train_test_split(x, y):
-
     from sklearn.model_selection import train_test_split
 
     (x_train, x_test, y_train, y_test) = train_test_split(
@@ -29,20 +27,18 @@ def make_train_test_split(x, y):
 
 
 def load_best_estimator():
-
     import os
     import pickle
 
-    if not os.path.exists("estimator.pickle"):
+    if not os.path.exists("homework/estimator.pickle"):
         return None
-    with open("estimator.pickle", "rb") as file:
+    with open("homework/estimator.pickle", "rb") as file:
         estimator = pickle.load(file)
 
     return estimator
 
 
 def eval_metrics(y_true, y_pred):
-
     from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
     mse = mean_squared_error(y_true, y_pred)
@@ -53,7 +49,6 @@ def eval_metrics(y_true, y_pred):
 
 
 def test_01():
-
     x, y = load_data()
     x_train, x_test, y_train, y_test = make_train_test_split(x, y)
     estimator = load_best_estimator()
